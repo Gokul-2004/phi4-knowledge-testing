@@ -1,0 +1,8 @@
+# Phase 3: GPT-4o Mini Evaluation Requirements
+openai>=1.0.0
+python-dotenv>=0.19.0
+
+# System requirements:
+# - OpenAI API key (set OPENAI_API_KEY environment variable)
+# - Python 3.8+
+# - Internet connection for API calls
