@@ -1,0 +1,7 @@
+# Phase 1: Phi4 Integration Requirements
+# No external Python packages required - uses built-in libraries
+
+# System requirements:
+# - Ollama installed
+# - Phi4 model downloaded (ollama pull phi4:latest)  
+# - Python 3.8+
