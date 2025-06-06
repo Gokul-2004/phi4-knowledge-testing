@@ -1,0 +1,131 @@
+{
+  "metadata": {
+    "version": "1.32.0",
+    "question_type": "focused_evaluation",
+    "created_date": "2025-06-06",
+    "total_questions": 15
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "question": "List 3 specific HPA improvements in Kubernetes 1.32.0 as bullet points. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["HPA", "autoscaling", "improvements"],
+        "important": ["metrics", "stabilization", "scale-up"]
+      }
+    },
+    {
+      "id": "q2",
+      "question": "Name 2 new networking features introduced in Kubernetes 1.32.0. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["networking", "features", "Kubernetes"],
+        "important": ["Gateway API", "ingress", "services"]
+      }
+    },
+    {
+      "id": "q3",
+      "question": "List 2 changes made to the Job controller in Kubernetes 1.32.0. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["Job", "controller", "changes"],
+        "important": ["successPolicy", "completion", "parallelism"]
+      }
+    },
+    {
+      "id": "q4",
+      "question": "Name the new structured authentication feature added in Kubernetes 1.32.0. Provide 1 sentence. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["structured", "authentication", "feature"],
+        "important": ["token", "credential", "authenticator"]
+      }
+    },
+    {
+      "id": "q5",
+      "question": "List 3 enhancements related to Gateway API in Kubernetes 1.32.0. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["Gateway API", "enhancements", "Kubernetes"],
+        "important": ["routes", "gatewayclass", "mesh"]
+      }
+    },
+    {
+      "id": "q6",
+      "question": "Mention 2 updates related to CSI volume group snapshots in Kubernetes 1.32.0. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["CSI", "volume group", "snapshots"],
+        "important": ["storage", "snapshot", "volume"]
+      }
+    },
+    {
+      "id": "q7",
+      "question": "Name 2 deprecated APIs in Kubernetes 1.32.0. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["deprecated", "APIs", "Kubernetes"],
+        "important": ["removal", "version", "compatibility"]
+      }
+    },
+    {
+      "id": "q8",
+      "question": "List 3 features related to security updates in Kubernetes 1.32.0. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["security", "updates", "features"],
+        "important": ["RBAC", "certificates", "admission"]
+      }
+    },
+    {
+      "id": "q9",
+      "question": "Give 2 changes made to kubelet behavior in Kubernetes 1.32.0. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["kubelet", "changes", "behavior"],
+        "important": ["node", "metrics", "logging"]
+      }
+    },
+    {
+      "id": "q10",
+      "question": "Name 2 new metrics introduced in Kubernetes 1.32.0. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["metrics", "new", "Kubernetes"],
+        "important": ["Prometheus", "observability", "monitoring"]
+      }
+    },
+    {
+      "id": "q11",
+      "question": "In 2 bullet points, list improvements to kubectl in Kubernetes 1.32.0. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["kubectl", "improvements", "CLI"],
+        "important": ["UX", "flags", "commands"]
+      }
+    },
+    {
+      "id": "q12",
+      "question": "List 3 updates to CRI or container runtimes in Kubernetes 1.32.0. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["CRI", "container runtime", "updates"],
+        "important": ["dockershim", "containerd", "OCI"]
+      }
+    },
+    {
+      "id": "q13",
+      "question": "Name 2 changes to admission control configuration in Kubernetes 1.32.0. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["admission", "control", "changes"],
+        "important": ["webhook", "policy", "configuration"]
+      }
+    },
+    {
+      "id": "q14",
+      "question": "List 2 updates related to scheduler plugins in Kubernetes 1.32.0. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["scheduler", "plugins", "updates"],
+        "important": ["prioritization", "binding", "extenders"]
+      }
+    },
+    {
+      "id": "q15",
+      "question": "Mention 2 changes to default behavior or values in Kubernetes 1.32.0. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["default", "behavior", "values"],
+        "important": ["configuration", "flags", "resource"]
+      }
+    }
+  ]
+}
+

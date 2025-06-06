@@ -1,0 +1,131 @@
+{
+  "metadata": {
+    "version": "1.32.0",
+    "question_type": "focused_evaluation",
+    "created_date": "2025-06-06",
+    "total_questions": 15
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "question": "What is the name of the new field added to the Service object in Kubernetes 1.32.0 to specify LoadBalancer behavior? Provide the exact field name. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["ipMode", "Service", "LoadBalancer"],
+        "important": ["VIP", "Proxy", "kube-proxy"]
+      }
+    },
+    {
+      "id": "q2",
+      "question": "Which API version of FlowSchema and PriorityLevelConfiguration was removed in Kubernetes 1.32.0? Provide the exact API version string. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["flowcontrol.apiserver.k8s.io/v1beta3", "FlowSchema", "PriorityLevelConfiguration"],
+        "important": ["API removal", "v1", "deprecated"]
+      }
+    },
+    {
+      "id": "q3",
+      "question": "What is the name of the feature gate introduced in Kubernetes 1.32.0 that allows CBOR encoding for API requests and responses? Provide the exact feature gate name. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["CBORServingAndStorage", "feature gate", "CBOR"],
+        "important": ["API encoding", "client-go", "storage encoding"]
+      }
+    },
+    {
+      "id": "q4",
+      "question": "What is the maximum number of retries the API server performs when generating a name using 'generateName' in Kubernetes 1.32.0? Provide the exact number. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["generateName", "API server", "retries"],
+        "important": ["name conflict", "resource creation", "automatic retry"]
+      }
+    },
+    {
+      "id": "q5",
+      "question": "What is the name of the new field added to the Job object in Kubernetes 1.32.0 to indicate external management? Provide the exact field name. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["managedBy", "Job", "field"],
+        "important": ["external controller", "multi-cluster", "synchronization"]
+      }
+    },
+    {
+      "id": "q6",
+      "question": "Which feature in Kubernetes 1.32.0 allows the kubelet to emit OpenTelemetry traces? Provide the exact KEP number. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["OpenTelemetry", "kubelet", "KEP-2831"],
+        "important": ["tracing", "observability", "span"]
+      }
+    },
+    {
+      "id": "q7",
+      "question": "What is the name of the new endpoint introduced in Kubernetes 1.32.0 that lists all command-line flags of a component? Provide the exact endpoint path. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["/flagz", "endpoint", "flags"],
+        "important": ["component configuration", "debugging", "feature gate"]
+      }
+    },
+    {
+      "id": "q8",
+      "question": "Which deprecated security policy mechanism was replaced by Pod Security Standards in Kubernetes 1.32.0? Provide the exact name of the deprecated mechanism. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["PodSecurityPolicy", "deprecated", "Pod Security Standards"],
+        "important": ["PSS", "namespace-level", "security profiles"]
+      }
+    },
+    {
+      "id": "q9",
+      "question": "What is the name of the feature in Kubernetes 1.32.0 that allows mounting OCI images as volumes? Provide the exact feature name. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["VolumeSource", "OCI", "mount"],
+        "important": ["artifact", "image", "volume"]
+      }
+    },
+    {
+      "id": "q10",
+      "question": "What is the name of the new field added to the StatefulSet PVCs in Kubernetes 1.32.0 that enables automatic cleanup? Provide the exact field name. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["auto-remove", "PVC", "StatefulSet"],
+        "important": ["persistent volume", "cleanup", "storage management"]
+      }
+    },
+    {
+      "id": "q11",
+      "question": "Which operating system's node shutdown behavior was enhanced in Kubernetes 1.32.0 to support graceful termination? Provide the exact operating system name. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["Windows", "graceful shutdown", "node"],
+        "important": ["kubelet", "termination", "maintenance"]
+      }
+    },
+    {
+      "id": "q12",
+      "question": "What is the name of the new endpoint introduced in Kubernetes 1.32.0 that provides component status information? Provide the exact endpoint path. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["/statusz", "endpoint", "status"],
+        "important": ["component health", "diagnostics", "monitoring"]
+      }
+    },
+    {
+      "id": "q13",
+      "question": "What is the name of the new field added to the Pod status in Kubernetes 1.32.0 to report device health? Provide the exact field name. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["resource health status", "Pod status", "device health"],
+        "important": ["DRA", "KEP-4680", "troubleshooting"]
+      }
+    },
+    {
+      "id": "q14",
+      "question": "Which feature gate in Kubernetes 1.32.0 allows almost all printable ASCII characters in environment variable names? Provide the exact feature gate name. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["RelaxedEnvironmentVariableValidation", "feature gate", "environment variables"],
+        "important": ["ASCII characters", "validation", "naming"]
+      }
+    },
+    {
+      "id": "q15",
+      "question": "What is the name of the feature in Kubernetes 1.32.0 that allows specifying resource requests and limits at the Pod level? Provide the exact feature name. IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "keywords": {
+        "essential": ["Pod-level resource specification", "resource requests", "limits"],
+        "important": ["PodSpec", "container resources", "scheduling"]
+      }
+    }
+  ]
+}
+
