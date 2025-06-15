@@ -1,0 +1,91 @@
+{
+  "metadata": {
+    "generated_by": "ChatGPT-4",
+    "creation_date": "2025-06-14",
+    "total_questions": 10,
+    "evaluation_type": "ragas_comparison",
+    "description": "Expert-level Kubernetes v1.32.0 questions for knowledge boundary testing"
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "title": "CPU Manager Policy Behavior with Shared Pools",
+      "question": "In Kubernetes v1.32.0, how does the CPU Manager handle CPU allocation when both Guaranteed and Burstable pods compete for CPU cores on a node using static policy with reserved CPUs? IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "reference_answer": "The CPU Manager with static policy isolates exclusive CPUs for Guaranteed pods with integer CPU requests. Burstable and BestEffort pods share remaining CPUs via the shared pool. If exclusive CPUs are exhausted, Burstable pods are not scheduled on isolated cores.",
+      "category": "resource management",
+      "difficulty": "expert"
+    },
+    {
+      "id": "q2",
+      "title": "Dynamic Resource Allocation (DRA) Scheduling Interactions",
+      "question": "How does Kubernetes v1.32.0 scheduler handle multiple ResourceClaimTemplates attached to a pod when resource drivers have interdependent constraints (e.g., GPUs and NICs both requiring NUMA alignment)? IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "reference_answer": "The scheduler evaluates all ResourceClaims together, respecting driver-provided allocation hints via the DRA framework. It attempts to find nodes satisfying all claim constraints simultaneously. Resource drivers can expose topology hints, which the scheduler aligns for co-location.",
+      "category": "scheduling",
+      "difficulty": "expert"
+    },
+    {
+      "id": "q3",
+      "title": "Server-side Apply Conflict Resolution under High Load",
+      "question": "In Kubernetes v1.32.0, how does server-side apply handle field conflicts when multiple clients attempt concurrent updates on intersecting fields of a resource? IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "reference_answer": "Server-side apply uses field ownership tracking per field path. When multiple clients modify the same field, conflicts are detected, and the server rejects conflicting updates unless forceApply is used. Field managers maintain consistent ownership.",
+      "category": "api consistency",
+      "difficulty": "expert"
+    },
+    {
+      "id": "q4",
+      "title": "Dual-stack Service Stability on Node Restarts",
+      "question": "What mechanisms ensure consistency of dual-stack Services (IPv4 + IPv6) after kube-proxy recovers from node restarts or crash loops in Kubernetes v1.32.0? IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "reference_answer": "Kube-proxy synchronizes full iptables or IPVS state on startup based on Service and EndpointSlice API objects. Dual-stack requires that both address families are re-populated into kernel tables. Any inconsistencies are reconciled during the sync loop.",
+      "category": "networking",
+      "difficulty": "expert"
+    },
+    {
+      "id": "q5",
+      "title": "Node Shutdown Graceful Termination on Windows",
+      "question": "How does Kubernetes v1.32.0 ensure ordered graceful shutdown of containers on Windows nodes, especially considering PreStop hooks and ShutdownGracePeriod configurations? IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "reference_answer": "During node shutdown, kubelet sends termination signals to Windows containers, invokes PreStop hooks, honors pod.spec.terminationGracePeriodSeconds, and observes kubelet's shutdown-grace-period. The Shutdown Manager component coordinates container stop order if feature-gates are enabled.",
+      "category": "node lifecycle",
+      "difficulty": "expert"
+    },
+    {
+      "id": "q6",
+      "title": "TLS Cipher Suite Deprecation Impacts",
+      "question": "What compatibility issues arise from Kubernetes v1.32.0 removing TLS_RSA cipher suites from kube-apiserver, especially for legacy clients and kubelet versions? IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "reference_answer": "Clients using deprecated ciphers will fail TLS handshake unless compatible cipher suites remain enabled via kube-apiserver's --tls-cipher-suites flag. Most modern Go clients auto-negotiate acceptable ciphers, but legacy Java clients may fail without updates.",
+      "category": "security",
+      "difficulty": "expert"
+    },
+    {
+      "id": "q7",
+      "title": "PodDisruptionBudget (PDB) Enforcement in Upgrade Scenarios",
+      "question": "During Kubernetes v1.32.0 version upgrades, how are PodDisruptionBudgets enforced when automated tools (like cluster-autoscaler or kubeadm upgrade) attempt disruptive actions? IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "reference_answer": "Evictions honor PDB constraints. If disruptions exceed allowed levels, evictions are blocked unless --force or --ignore-pdb flags are explicitly used. kubeadm respects PDBs unless forcibly overridden.",
+      "category": "availability",
+      "difficulty": "expert"
+    },
+    {
+      "id": "q8",
+      "title": "StatefulSet VolumeClaimTemplate AutoDeletion Behavior",
+      "question": "How does Kubernetes v1.32.0 handle PVC deletion when StatefulSet pods are deleted or scaled down with the AutoDeletePVC feature enabled? IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "reference_answer": "When AutoDeletePVC is enabled, PVCs created from volumeClaimTemplates are automatically deleted when their associated StatefulSet pod is deleted. This behavior depends on feature-gates and annotation presence. Retention policies on the StatefulSet also influence deletion.",
+      "category": "storage",
+      "difficulty": "expert"
+    },
+    {
+      "id": "q9",
+      "title": "Ordered Pod Termination with Sidecars",
+      "question": "When Kubernetes v1.32.0 uses the OrderedReady pod termination alpha feature, how is sidecar shutdown order guaranteed during pod deletion or node failures? IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "reference_answer": "Sidecar containers terminate based on their startup order and container lifecycle sequencing. Kubelet invokes preStop hooks in correct order if shutdown grace periods allow. Node power loss may disrupt this sequence if termination windows are insufficient.",
+      "category": "pod lifecycle",
+      "difficulty": "expert"
+    },
+    {
+      "id": "q10",
+      "title": "MemoryManager Behavior with HugePages",
+      "question": "How does Kubernetes v1.32.0 MemoryManager interact with HugePages allocations when dynamic policy and NUMA alignment are both enabled? IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "reference_answer": "The MemoryManager attempts NUMA-aware memory allocation. HugePages allocations occur via explicit resource requests and may require alignment with CPU topology hints for optimal placement. Coordination depends on kubelet, device plugins, and node topology.",
+      "category": "resource management",
+      "difficulty": "expert"
+    }
+  ]
+}

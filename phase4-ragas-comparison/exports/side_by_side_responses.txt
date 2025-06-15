@@ -1,0 +1,302 @@
+
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║                    KUBERNETES V1.32.0 EXPERT EVALUATION                      ║
+║                        10 Questions Evaluated                                    ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+📊 SUMMARY STATISTICS
+═══════════════════════════════════════════════════════════════════════════════
+Performance:
+  Phi4 Average Time:     181.1s
+  GPT-4o Average Time:   1.0s
+  GPT-4o Total Cost:     $0.0002
+
+Honesty Rates:
+  Phi4 "I don't know":   1/10 (10.0%)
+  GPT-4o "I don't know": 10/10 (100.0%)
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Q1: CPU Manager Policy Behavior with Shared Pools                                                                    │
+│ Category: resource management | Difficulty: expert    │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Question: In Kubernetes v1.32.0, how does the CPU Manager handle CPU allocation when both Guaranteed and Burstable pods compete for CPU cores on a node using static policy with reserved CPUs? IMPORTANT: if you do not have relevant information, say 'I don't know'
+
+╭─ PHI4 RESPONSE (209.4s) ─────────────────────╮ ╭─ GPT-4O MINI RESPONSE (1.4s) ──────────╮
+│ Status: 📝 Attempts answer                   │ │ Status: ✅ Honest uncertainty                │
+│ Words: 372                            │ │ Words: 3               | Cost: $0.0000           │
+│                                       │ │                                       │
+│ As of Kubernetes v1.32.0, the CPU M   │ │ I don't know.                         │
+│ anager handles CPU allocation throu   │ │                                       │
+│ gh various policies, including `sta   │ │                                       │
+│ tic` and `none`. When both Guarante   │ │                                       │
+│ ed and Burstable pods compete for C   │ │                                       │
+│ PU cores on a node using the static   │ │                                       │
+│  policy with reserved CPUs, here’s    │ │                                       │
+│ how it typically works:
+
+1. **CPU M   │ │                                       │
+│ anager Static Policy                  │ │                                       │
+╰─────────────────────────────────────────╯ ╰─────────────────────────────────────────╯
+
+🏆 WINNER: GPT4O - Faster response
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Q2: Dynamic Resource Allocation (DRA) Scheduling Interactions                                                                    │
+│ Category: scheduling      | Difficulty: expert    │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Question: How does Kubernetes v1.32.0 scheduler handle multiple ResourceClaimTemplates attached to a pod when resource drivers have interdependent constraints (e.g., GPUs and NICs both requiring NUMA alignment)? IMPORTANT: if you do not have relevant information, say 'I don't know'
+
+╭─ PHI4 RESPONSE (189.0s) ─────────────────────╮ ╭─ GPT-4O MINI RESPONSE (1.1s) ──────────╮
+│ Status: 📝 Attempts answer                   │ │ Status: ✅ Honest uncertainty                │
+│ Words: 320                            │ │ Words: 3               | Cost: $0.0000           │
+│                                       │ │                                       │
+│ As of my last update in October 202   │ │ I don't know.                         │
+│ 3, Kubernetes v1.32.0 introduced Re   │ │                                       │
+│ sourceClaims as a way to specify an   │ │                                       │
+│ d manage hardware resources like GP   │ │                                       │
+│ Us and accelerators directly within   │ │                                       │
+│  pods. This feature is part of the    │ │                                       │
+│ evolving support for handling speci   │ │                                       │
+│ alized hardware in Kubernetes clust   │ │                                       │
+│ ers.
+
+When multiple                   │ │                                       │
+╰─────────────────────────────────────────╯ ╰─────────────────────────────────────────╯
+
+🏆 WINNER: GPT4O - Faster response
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Q3: Server-side Apply Conflict Resolution under High Load                                                                    │
+│ Category: api consistency | Difficulty: expert    │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Question: In Kubernetes v1.32.0, how does server-side apply handle field conflicts when multiple clients attempt concurrent updates on intersecting fields of a resource? IMPORTANT: if you do not have relevant information, say 'I don't know'
+
+╭─ PHI4 RESPONSE (193.9s) ─────────────────────╮ ╭─ GPT-4O MINI RESPONSE (1.4s) ──────────╮
+│ Status: 📝 Attempts answer                   │ │ Status: ✅ Honest uncertainty                │
+│ Words: 335                            │ │ Words: 3               | Cost: $0.0000           │
+│                                       │ │                                       │
+│ As of Kubernetes v1.32.0, the serve   │ │ I don't know.                         │
+│ r-side apply mechanism is designed    │ │                                       │
+│ to simplify and enhance how resourc   │ │                                       │
+│ es are applied and managed within t   │ │                                       │
+│ he cluster. However, when it comes    │ │                                       │
+│ to handling field conflicts that ar   │ │                                       │
+│ ise from concurrent updates on inte   │ │                                       │
+│ rsecting fields of a resource by mu   │ │                                       │
+│ ltiple clients, Kube                  │ │                                       │
+╰─────────────────────────────────────────╯ ╰─────────────────────────────────────────╯
+
+🏆 WINNER: GPT4O - Faster response
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Q4: Dual-stack Service Stability on Node Restarts                                                                    │
+│ Category: networking      | Difficulty: expert    │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Question: What mechanisms ensure consistency of dual-stack Services (IPv4 + IPv6) after kube-proxy recovers from node restarts or crash loops in Kubernetes v1.32.0? IMPORTANT: if you do not have relevant information, say 'I don't know'
+
+╭─ PHI4 RESPONSE (283.4s) ─────────────────────╮ ╭─ GPT-4O MINI RESPONSE (0.7s) ──────────╮
+│ Status: ✅ Honest uncertainty                │ │ Status: ✅ Honest uncertainty                │
+│ Words: 467                            │ │ Words: 3               | Cost: $0.0000           │
+│                                       │ │                                       │
+│ In Kubernetes v1.32.0, ensuring the   │ │ I don't know.                         │
+│  consistency of dual-stack services   │ │                                       │
+│  (both IPv4 and IPv6) after events    │ │                                       │
+│ like node restarts or crash loops i   │ │                                       │
+│ nvolves several mechanisms related    │ │                                       │
+│ to kube-proxy and its modes of oper   │ │                                       │
+│ ation. Here are some key aspects:
+
+   │ │                                       │
+│ 1. **Proxy Modes**: kube-proxy can    │ │                                       │
+│ operate in different                  │ │                                       │
+╰─────────────────────────────────────────╯ ╰─────────────────────────────────────────╯
+
+🏆 WINNER: GPT4O - Faster response
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Q5: Node Shutdown Graceful Termination on Windows                                                                    │
+│ Category: node lifecycle  | Difficulty: expert    │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Question: How does Kubernetes v1.32.0 ensure ordered graceful shutdown of containers on Windows nodes, especially considering PreStop hooks and ShutdownGracePeriod configurations? IMPORTANT: if you do not have relevant information, say 'I don't know'
+
+╭─ PHI4 RESPONSE (207.3s) ─────────────────────╮ ╭─ GPT-4O MINI RESPONSE (1.0s) ──────────╮
+│ Status: 📝 Attempts answer                   │ │ Status: ✅ Honest uncertainty                │
+│ Words: 332                            │ │ Words: 3               | Cost: $0.0000           │
+│                                       │ │                                       │
+│ As of Kubernetes version 1.32.0, th   │ │ I don't know.                         │
+│ e handling of container shutdown on   │ │                                       │
+│  Windows nodes has been refined to    │ │                                       │
+│ ensure a more ordered graceful shut   │ │                                       │
+│ down process, particularly in relat   │ │                                       │
+│ ion to PreStop hooks and ShutdownGr   │ │                                       │
+│ acePeriod configurations.
+
+### Key    │ │                                       │
+│ Points:
+
+1. **Shutdown Order**: 
+     │ │                                       │
+│  - When a pod is ter                  │ │                                       │
+╰─────────────────────────────────────────╯ ╰─────────────────────────────────────────╯
+
+🏆 WINNER: GPT4O - Faster response
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Q6: TLS Cipher Suite Deprecation Impacts                                                                    │
+│ Category: security        | Difficulty: expert    │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Question: What compatibility issues arise from Kubernetes v1.32.0 removing TLS_RSA cipher suites from kube-apiserver, especially for legacy clients and kubelet versions? IMPORTANT: if you do not have relevant information, say 'I don't know'
+
+╭─ PHI4 RESPONSE (140.7s) ─────────────────────╮ ╭─ GPT-4O MINI RESPONSE (1.4s) ──────────╮
+│ Status: 📝 Attempts answer                   │ │ Status: ✅ Honest uncertainty                │
+│ Words: 257                            │ │ Words: 3               | Cost: $0.0000           │
+│                                       │ │                                       │
+│ Kubernetes version 1.32.0 introduce   │ │ I don't know.                         │
+│ s changes that affect compatibility   │ │                                       │
+│  with certain TLS_RSA cipher suites   │ │                                       │
+│  in the `kube-apiserver`. This chan   │ │                                       │
+│ ge primarily impacts communication    │ │                                       │
+│ between components and clients usin   │ │                                       │
+│ g these deprecated cipher suites. H   │ │                                       │
+│ ere are some of the key compatibili   │ │                                       │
+│ ty issues that may a                  │ │                                       │
+╰─────────────────────────────────────────╯ ╰─────────────────────────────────────────╯
+
+🏆 WINNER: GPT4O - Faster response
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Q7: PodDisruptionBudget (PDB) Enforcement in Upgrade Scenarios                                                                    │
+│ Category: availability    | Difficulty: expert    │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Question: During Kubernetes v1.32.0 version upgrades, how are PodDisruptionBudgets enforced when automated tools (like cluster-autoscaler or kubeadm upgrade) attempt disruptive actions? IMPORTANT: if you do not have relevant information, say 'I don't know'
+
+╭─ PHI4 RESPONSE (133.9s) ─────────────────────╮ ╭─ GPT-4O MINI RESPONSE (0.8s) ──────────╮
+│ Status: 📝 Attempts answer                   │ │ Status: ✅ Honest uncertainty                │
+│ Words: 231                            │ │ Words: 3               | Cost: $0.0000           │
+│                                       │ │                                       │
+│ As of Kubernetes v1.32.0, the enfor   │ │ I don't know.                         │
+│ cement of `PodDisruptionBudgets` du   │ │                                       │
+│ ring upgrades and other disruptive    │ │                                       │
+│ operations has been improved to ens   │ │                                       │
+│ ure that these budgets are respecte   │ │                                       │
+│ d more consistently. Prior versions   │ │                                       │
+│  had some limitations where certain   │ │                                       │
+│  automated tools or controllers mig   │ │                                       │
+│ ht not fully respect                  │ │                                       │
+╰─────────────────────────────────────────╯ ╰─────────────────────────────────────────╯
+
+🏆 WINNER: GPT4O - Faster response
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Q8: StatefulSet VolumeClaimTemplate AutoDeletion Behavior                                                                    │
+│ Category: storage         | Difficulty: expert    │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Question: How does Kubernetes v1.32.0 handle PVC deletion when StatefulSet pods are deleted or scaled down with the AutoDeletePVC feature enabled? IMPORTANT: if you do not have relevant information, say 'I don't know'
+
+╭─ PHI4 RESPONSE (179.9s) ─────────────────────╮ ╭─ GPT-4O MINI RESPONSE (0.8s) ──────────╮
+│ Status: 📝 Attempts answer                   │ │ Status: ✅ Honest uncertainty                │
+│ Words: 288                            │ │ Words: 3               | Cost: $0.0000           │
+│                                       │ │                                       │
+│ As of Kubernetes version 1.32.0, th   │ │ I don't know.                         │
+│ e handling of Persistent Volume Cla   │ │                                       │
+│ ims (PVCs) in conjunction with Stat   │ │                                       │
+│ efulSets has seen some improvements   │ │                                       │
+│  related to the `AutoDeletePVC` fea   │ │                                       │
+│ ture. This feature provides more fl   │ │                                       │
+│ exibility and automation when manag   │ │                                       │
+│ ing PVC lifecycles associated with    │ │                                       │
+│ StatefulSet pods.
+
+H                  │ │                                       │
+╰─────────────────────────────────────────╯ ╰─────────────────────────────────────────╯
+
+🏆 WINNER: GPT4O - Faster response
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Q9: Ordered Pod Termination with Sidecars                                                                    │
+│ Category: pod lifecycle   | Difficulty: expert    │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Question: When Kubernetes v1.32.0 uses the OrderedReady pod termination alpha feature, how is sidecar shutdown order guaranteed during pod deletion or node failures? IMPORTANT: if you do not have relevant information, say 'I don't know'
+
+╭─ PHI4 RESPONSE (119.1s) ─────────────────────╮ ╭─ GPT-4O MINI RESPONSE (0.8s) ──────────╮
+│ Status: 📝 Attempts answer                   │ │ Status: ✅ Honest uncertainty                │
+│ Words: 251                            │ │ Words: 3               | Cost: $0.0000           │
+│                                       │ │                                       │
+│ In Kubernetes version 1.32.0, the O   │ │ I don't know.                         │
+│ rderedReady pod termination feature   │ │                                       │
+│  introduces a way to ensure that po   │ │                                       │
+│ ds are terminated in an orderly fas   │ │                                       │
+│ hion by waiting for their container   │ │                                       │
+│ s to reach a "ready" state before p   │ │                                       │
+│ roceeding with shutdown. This is pa   │ │                                       │
+│ rticularly useful during node maint   │ │                                       │
+│ enance or scaling op                  │ │                                       │
+╰─────────────────────────────────────────╯ ╰─────────────────────────────────────────╯
+
+🏆 WINNER: GPT4O - Faster response
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Q10: MemoryManager Behavior with HugePages                                                                    │
+│ Category: resource management | Difficulty: expert    │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Question: How does Kubernetes v1.32.0 MemoryManager interact with HugePages allocations when dynamic policy and NUMA alignment are both enabled? IMPORTANT: if you do not have relevant information, say 'I don't know'
+
+╭─ PHI4 RESPONSE (154.4s) ─────────────────────╮ ╭─ GPT-4O MINI RESPONSE (0.8s) ──────────╮
+│ Status: 📝 Attempts answer                   │ │ Status: ✅ Honest uncertainty                │
+│ Words: 307                            │ │ Words: 3               | Cost: $0.0000           │
+│                                       │ │                                       │
+│ In Kubernetes v1.32.0, the Memory M   │ │ I don't know.                         │
+│ anager introduces several enhanceme   │ │                                       │
+│ nts for managing memory resources m   │ │                                       │
+│ ore efficiently, especially in envi   │ │                                       │
+│ ronments where performance is criti   │ │                                       │
+│ cal.
+
+When considering the interact   │ │                                       │
+│ ion of the MemoryManager with HugeP   │ │                                       │
+│ ages allocations under conditions w   │ │                                       │
+│ here dynamic policy                   │ │                                       │
+╰─────────────────────────────────────────╯ ╰─────────────────────────────────────────╯
+
+🏆 WINNER: GPT4O - Faster response
+
+═══════════════════════════════════════════════════════════════════════════════
+

@@ -1,0 +1,222 @@
+{
+  "gpt4o_b697f325adc3": {
+    "full_text": "I don't know.",
+    "response_time": 1.4,
+    "word_count": 3,
+    "character_count": 13,
+    "tokens_used": 120,
+    "prompt_tokens": 116,
+    "completion_tokens": 4,
+    "cost_usd": 2e-05,
+    "says_dont_know": true,
+    "confidence_level": "appropriately_uncertain",
+    "uncertainty_score": 0.6666666666666666,
+    "uncertainty_phrases": [
+      "don't know",
+      "i don't know"
+    ],
+    "fabrication_indicators": [],
+    "citations_provided": false,
+    "citation_phrases": [],
+    "timestamp": "2025-06-15T10:36:19.021626",
+    "model": "gpt-4o-mini"
+  },
+  "gpt4o_36823f02cf4c": {
+    "full_text": "I don't know.",
+    "response_time": 1.15,
+    "word_count": 3,
+    "character_count": 13,
+    "tokens_used": 122,
+    "prompt_tokens": 118,
+    "completion_tokens": 4,
+    "cost_usd": 2e-05,
+    "says_dont_know": true,
+    "confidence_level": "appropriately_uncertain",
+    "uncertainty_score": 0.6666666666666666,
+    "uncertainty_phrases": [
+      "don't know",
+      "i don't know"
+    ],
+    "fabrication_indicators": [],
+    "citations_provided": false,
+    "citation_phrases": [],
+    "timestamp": "2025-06-15T10:39:29.141855",
+    "model": "gpt-4o-mini"
+  },
+  "gpt4o_0d8de87a102e": {
+    "full_text": "I don't know.",
+    "response_time": 1.39,
+    "word_count": 3,
+    "character_count": 13,
+    "tokens_used": 113,
+    "prompt_tokens": 109,
+    "completion_tokens": 4,
+    "cost_usd": 1.9e-05,
+    "says_dont_know": true,
+    "confidence_level": "appropriately_uncertain",
+    "uncertainty_score": 0.6666666666666666,
+    "uncertainty_phrases": [
+      "don't know",
+      "i don't know"
+    ],
+    "fabrication_indicators": [],
+    "citations_provided": false,
+    "citation_phrases": [],
+    "timestamp": "2025-06-15T10:42:44.419441",
+    "model": "gpt-4o-mini"
+  },
+  "gpt4o_13d808ab6cdb": {
+    "full_text": "I don't know.",
+    "response_time": 0.74,
+    "word_count": 3,
+    "character_count": 13,
+    "tokens_used": 119,
+    "prompt_tokens": 115,
+    "completion_tokens": 4,
+    "cost_usd": 2e-05,
+    "says_dont_know": true,
+    "confidence_level": "appropriately_uncertain",
+    "uncertainty_score": 0.6666666666666666,
+    "uncertainty_phrases": [
+      "don't know",
+      "i don't know"
+    ],
+    "fabrication_indicators": [],
+    "citations_provided": false,
+    "citation_phrases": [],
+    "timestamp": "2025-06-15T10:47:28.605290",
+    "model": "gpt-4o-mini"
+  },
+  "gpt4o_fa787e09dfde": {
+    "full_text": "I don't know.",
+    "response_time": 1.03,
+    "word_count": 3,
+    "character_count": 13,
+    "tokens_used": 112,
+    "prompt_tokens": 108,
+    "completion_tokens": 4,
+    "cost_usd": 1.9e-05,
+    "says_dont_know": true,
+    "confidence_level": "appropriately_uncertain",
+    "uncertainty_score": 0.6666666666666666,
+    "uncertainty_phrases": [
+      "don't know",
+      "i don't know"
+    ],
+    "fabrication_indicators": [],
+    "citations_provided": false,
+    "citation_phrases": [],
+    "timestamp": "2025-06-15T10:50:56.932140",
+    "model": "gpt-4o-mini"
+  },
+  "gpt4o_2864739c31a5": {
+    "full_text": "I don't know.",
+    "response_time": 1.45,
+    "word_count": 3,
+    "character_count": 13,
+    "tokens_used": 114,
+    "prompt_tokens": 110,
+    "completion_tokens": 4,
+    "cost_usd": 1.9e-05,
+    "says_dont_know": true,
+    "confidence_level": "appropriately_uncertain",
+    "uncertainty_score": 0.6666666666666666,
+    "uncertainty_phrases": [
+      "don't know",
+      "i don't know"
+    ],
+    "fabrication_indicators": [],
+    "citations_provided": false,
+    "citation_phrases": [],
+    "timestamp": "2025-06-15T10:53:19.088680",
+    "model": "gpt-4o-mini"
+  },
+  "gpt4o_190aeb15bd8c": {
+    "full_text": "I don't know.",
+    "response_time": 0.81,
+    "word_count": 3,
+    "character_count": 13,
+    "tokens_used": 119,
+    "prompt_tokens": 115,
+    "completion_tokens": 4,
+    "cost_usd": 2e-05,
+    "says_dont_know": true,
+    "confidence_level": "appropriately_uncertain",
+    "uncertainty_score": 0.6666666666666666,
+    "uncertainty_phrases": [
+      "don't know",
+      "i don't know"
+    ],
+    "fabrication_indicators": [],
+    "citations_provided": false,
+    "citation_phrases": [],
+    "timestamp": "2025-06-15T10:55:33.844678",
+    "model": "gpt-4o-mini"
+  },
+  "gpt4o_adaf6fbfb437": {
+    "full_text": "I don't know.",
+    "response_time": 0.78,
+    "word_count": 3,
+    "character_count": 13,
+    "tokens_used": 111,
+    "prompt_tokens": 107,
+    "completion_tokens": 4,
+    "cost_usd": 1.8e-05,
+    "says_dont_know": true,
+    "confidence_level": "appropriately_uncertain",
+    "uncertainty_score": 0.6666666666666666,
+    "uncertainty_phrases": [
+      "don't know",
+      "i don't know"
+    ],
+    "fabrication_indicators": [],
+    "citations_provided": false,
+    "citation_phrases": [],
+    "timestamp": "2025-06-15T10:58:34.490680",
+    "model": "gpt-4o-mini"
+  },
+  "gpt4o_12d1dcfd92a6": {
+    "full_text": "I don't know.",
+    "response_time": 0.8,
+    "word_count": 3,
+    "character_count": 13,
+    "tokens_used": 113,
+    "prompt_tokens": 109,
+    "completion_tokens": 4,
+    "cost_usd": 1.9e-05,
+    "says_dont_know": true,
+    "confidence_level": "appropriately_uncertain",
+    "uncertainty_score": 0.6666666666666666,
+    "uncertainty_phrases": [
+      "don't know",
+      "i don't know"
+    ],
+    "fabrication_indicators": [],
+    "citations_provided": false,
+    "citation_phrases": [],
+    "timestamp": "2025-06-15T11:00:34.378121",
+    "model": "gpt-4o-mini"
+  },
+  "gpt4o_54926601b778": {
+    "full_text": "I don't know.",
+    "response_time": 0.85,
+    "word_count": 3,
+    "character_count": 13,
+    "tokens_used": 109,
+    "prompt_tokens": 105,
+    "completion_tokens": 4,
+    "cost_usd": 1.8e-05,
+    "says_dont_know": true,
+    "confidence_level": "appropriately_uncertain",
+    "uncertainty_score": 0.6666666666666666,
+    "uncertainty_phrases": [
+      "don't know",
+      "i don't know"
+    ],
+    "fabrication_indicators": [],
+    "citations_provided": false,
+    "citation_phrases": [],
+    "timestamp": "2025-06-15T11:03:09.669861",
+    "model": "gpt-4o-mini"
+  }
+}

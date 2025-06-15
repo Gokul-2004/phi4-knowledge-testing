@@ -1,0 +1,5 @@
+[openinference_instrumentor]
+haystack = openinference.instrumentation.haystack:HaystackInstrumentor
+
+[opentelemetry_instrumentor]
+haystack = openinference.instrumentation.haystack:HaystackInstrumentor

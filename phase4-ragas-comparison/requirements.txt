@@ -1,0 +1,12 @@
+# Phase 4: RAGAS Model Comparison
+ragas>=0.1.0
+datasets>=2.14.0
+langchain>=0.1.0
+openai>=1.0.0
+pandas>=2.0.0
+numpy>=1.24.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+scipy>=1.11.0
+python-dotenv>=0.19.0
+langwatch>=0.1.0

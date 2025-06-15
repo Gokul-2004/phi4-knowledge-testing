@@ -1,0 +1,934 @@
+{
+  "evaluation_metadata": {
+    "total_questions": 10,
+    "completed_questions": 10,
+    "evaluation_date": "2025-06-15T14:19:20.403906",
+    "kubernetes_version": "v1.32.0",
+    "models_compared": [
+      "phi4:latest",
+      "gpt-4o-mini"
+    ],
+    "langwatch_enabled": true,
+    "ragas_enabled": false
+  },
+  "performance_summary": {
+    "phi4": {
+      "total_questions": 10,
+      "total_time": 1810.98,
+      "avg_response_time": 181.1,
+      "honest_responses": 1
+    },
+    "gpt4o": {
+      "total_questions": 10,
+      "total_time": 10.4,
+      "avg_response_time": 1.04,
+      "total_cost_usd": 0.000192,
+      "total_tokens": 1152,
+      "honest_responses": 10
+    }
+  },
+  "knowledge_boundary_analysis": {
+    "phi4_analysis": {
+      "honest_uncertainty_count": 1,
+      "fabrication_attempts": 9,
+      "total_fabrication_indicators": 5,
+      "provides_citations": 6,
+      "avg_uncertainty_score": 0.4883333333333334,
+      "honest_uncertainty_rate": 0.1
+    },
+    "gpt4o_analysis": {
+      "honest_uncertainty_count": 10,
+      "fabrication_attempts": 0,
+      "total_fabrication_indicators": 0,
+      "provides_citations": 0,
+      "avg_uncertainty_score": 0.6666666666666667,
+      "honest_uncertainty_rate": 1.0
+    },
+    "comparison": {
+      "better_uncertainty_handling": "gpt4o",
+      "lower_fabrication_risk": "gpt4o",
+      "better_citation_practice": "phi4"
+    }
+  },
+  "ragas_evaluation": {
+    "error": "RAGAS not available"
+  },
+  "detailed_question_responses": [
+    {
+      "question_id": "q1",
+      "title": "CPU Manager Policy Behavior with Shared Pools",
+      "question": "In Kubernetes v1.32.0, how does the CPU Manager handle CPU allocation when both Guaranteed and Burstable pods compete for CPU cores on a node using static policy with reserved CPUs? IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "category": "resource management",
+      "difficulty": "expert",
+      "reference_answer": "The CPU Manager with static policy isolates exclusive CPUs for Guaranteed pods with integer CPU requests. Burstable and BestEffort pods share remaining CPUs via the shared pool. If exclusive CPUs are exhausted, Burstable pods are not scheduled on isolated cores.",
+      "phi4_response": {
+        "full_text": "As of Kubernetes v1.32.0, the CPU Manager handles CPU allocation through various policies, including `static` and `none`. When both Guaranteed and Burstable pods compete for CPU cores on a node using the static policy with reserved CPUs, here\u2019s how it typically works:\n\n1. **CPU Manager Static Policy**: In this mode, the CPU Manager reserves certain CPU cores exclusively for the use of containers managed by the kubelet's cgroup hierarchy. This ensures that these reserved CPUs are not shared with other processes.\n\n2. **Reserved CPUs**: When using a static policy, you can specify `reserved-cpus` in the configuration, which allocates specific CPU cores for exclusive pod usage. These cores are managed separately from the default system-wide resource sharing.\n\n3. **Guaranteed Pods**: Pods with Guaranteed Quality of Service (QoS) have their required resources explicitly specified and must be allocated the full amount they request. In a static policy setup with reserved CPUs, these pods will get priority access to the reserved CPUs first if needed, ensuring that their CPU needs are met.\n\n4. **Burstable Pods**: These pods can consume more than their base requirement up to an upper limit (`requests + limits`). They are lower in priority compared to Guaranteed pods regarding resource allocation.\n\n5. **Allocation Process**:\n   - When both Guaranteed and Burstable pods compete for CPU resources, the scheduler will first attempt to allocate the necessary resources from the reserved CPUs to meet the needs of any Guaranteed pods.\n   - Once the Guaranteed pods' requirements are fulfilled, any remaining reserved CPU capacity can be used by Burstable or BestEffort pods if needed.\n   - If the reserved CPUs do not suffice for all Guaranteed pods, then non-reserved (regular) CPUs might be utilized as a fallback.\n\n6. **Priority and Preemption**: Guaranteed pods have higher priority over Burstable ones when there is contention for resources. In scenarios where resource pressure exists, Kubernetes might preempt lower-priority (e.g., BestEffort or Burstable) pods to maintain the guarantees of higher-priority ones.\n\nIn summary, under a static CPU Manager policy with reserved CPUs, Guaranteed pods are prioritized for CPU allocation on the reserved set of cores, ensuring they receive their required resources. Burstable pods will utilize any remaining reserved capacity, if available, and then potentially rely on non-reserved CPU resources as needed.",
+        "response_time": 209.39,
+        "word_count": 372,
+        "character_count": 2463,
+        "says_dont_know": false,
+        "confidence_level": "moderate",
+        "uncertainty_score": 0.3333333333333333,
+        "uncertainty_phrases": [
+          "might"
+        ],
+        "fabrication_indicators": [],
+        "citations_provided": false,
+        "citation_phrases": [],
+        "timestamp": "2025-06-15T10:36:17.620205",
+        "model": "phi4:latest"
+      },
+      "gpt4o_response": {
+        "full_text": "I don't know.",
+        "response_time": 1.4,
+        "word_count": 3,
+        "character_count": 13,
+        "tokens_used": 120,
+        "prompt_tokens": 116,
+        "completion_tokens": 4,
+        "cost_usd": 2e-05,
+        "says_dont_know": true,
+        "confidence_level": "appropriately_uncertain",
+        "uncertainty_score": 0.6666666666666666,
+        "uncertainty_phrases": [
+          "don't know",
+          "i don't know"
+        ],
+        "fabrication_indicators": [],
+        "citations_provided": false,
+        "citation_phrases": [],
+        "timestamp": "2025-06-15T10:36:19.021626",
+        "model": "gpt-4o-mini"
+      },
+      "response_comparison": {
+        "length_analysis": {
+          "phi4_words": 372,
+          "gpt4o_words": 3,
+          "ratio": "gpt4o_0.0x_longer",
+          "length_winner": "phi4"
+        },
+        "uncertainty_handling": {
+          "phi4_says_dont_know": false,
+          "gpt4o_says_dont_know": true,
+          "phi4_uncertainty_score": 0.3333333333333333,
+          "gpt4o_uncertainty_score": 0.6666666666666666,
+          "better_uncertainty": "gpt4o"
+        },
+        "fabrication_analysis": {
+          "phi4_fabrication_indicators": 0,
+          "gpt4o_fabrication_indicators": 0,
+          "phi4_indicators": [],
+          "gpt4o_indicators": [],
+          "lower_fabrication_risk": "gpt4o"
+        },
+        "performance": {
+          "phi4_time": 209.39,
+          "gpt4o_time": 1.4,
+          "speed_winner": "gpt4o",
+          "gpt4o_cost": 2e-05
+        },
+        "overall_assessment": {
+          "phi4_advantages": 0,
+          "gpt4o_advantages": 1,
+          "recommended_model": "gpt4o"
+        }
+      }
+    },
+    {
+      "question_id": "q2",
+      "title": "Dynamic Resource Allocation (DRA) Scheduling Interactions",
+      "question": "How does Kubernetes v1.32.0 scheduler handle multiple ResourceClaimTemplates attached to a pod when resource drivers have interdependent constraints (e.g., GPUs and NICs both requiring NUMA alignment)? IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "category": "scheduling",
+      "difficulty": "expert",
+      "reference_answer": "The scheduler evaluates all ResourceClaims together, respecting driver-provided allocation hints via the DRA framework. It attempts to find nodes satisfying all claim constraints simultaneously. Resource drivers can expose topology hints, which the scheduler aligns for co-location.",
+      "phi4_response": {
+        "full_text": "As of my last update in October 2023, Kubernetes v1.32.0 introduced ResourceClaims as a way to specify and manage hardware resources like GPUs and accelerators directly within pods. This feature is part of the evolving support for handling specialized hardware in Kubernetes clusters.\n\nWhen multiple `ResourceClaimTemplates` are attached to a pod, each template specifies a claim for a particular type of resource (e.g., one might request GPU resources while another requests NICs). The scheduler has to consider these claims together when making placement decisions. However, handling interdependent constraints like NUMA alignment between GPUs and NICs involves complex scheduling logic.\n\n### Key Considerations:\n1. **Scheduler Policies**: Kubernetes allows for custom scheduler policies which can be used to enforce specific node selection criteria, including NUMA considerations. You might need to implement or extend existing policies to handle these interdependencies effectively.\n   \n2. **Resource Providers**: The scheduler's ability to manage such complex constraints often depends on the integration with resource providers. These are external components that provide the resources specified in `ResourceClaimTemplates`. They can enforce additional constraints like NUMA alignment.\n\n3. **Node Affinity and Topology Spread Constraints**: You can use these standard Kubernetes scheduling features to help guide the scheduler. For example, node affinity rules can be used to restrict pods to nodes with specific hardware capabilities.\n\n4. **Custom Scheduler Extenders**: If built-in mechanisms are insufficient, you might need to develop custom scheduler extenders or plugins that understand and enforce your specific interdependent constraints.\n\n5. **Updates and Documentation**: Always refer to the latest Kubernetes release notes and documentation for any updates or new features related to scheduling with `ResourceClaimTemplates`.\n\nGiven these points, while Kubernetes provides a framework for handling such scenarios, effectively managing interdependent hardware constraints like NUMA alignment typically requires custom solutions or extensions beyond the default scheduler capabilities in v1.32.0.\n\nIf you're implementing this, ensure that your resource providers and any custom scheduler logic are well-integrated to handle these complex scheduling requirements.",
+        "response_time": 188.97,
+        "word_count": 320,
+        "character_count": 2377,
+        "says_dont_know": false,
+        "confidence_level": "moderate",
+        "uncertainty_score": 0.6666666666666666,
+        "uncertainty_phrases": [
+          "refer to",
+          "might"
+        ],
+        "fabrication_indicators": [],
+        "citations_provided": true,
+        "citation_phrases": [
+          "release notes",
+          "refer to"
+        ],
+        "timestamp": "2025-06-15T10:39:27.993852",
+        "model": "phi4:latest"
+      },
+      "gpt4o_response": {
+        "full_text": "I don't know.",
+        "response_time": 1.15,
+        "word_count": 3,
+        "character_count": 13,
+        "tokens_used": 122,
+        "prompt_tokens": 118,
+        "completion_tokens": 4,
+        "cost_usd": 2e-05,
+        "says_dont_know": true,
+        "confidence_level": "appropriately_uncertain",
+        "uncertainty_score": 0.6666666666666666,
+        "uncertainty_phrases": [
+          "don't know",
+          "i don't know"
+        ],
+        "fabrication_indicators": [],
+        "citations_provided": false,
+        "citation_phrases": [],
+        "timestamp": "2025-06-15T10:39:29.141855",
+        "model": "gpt-4o-mini"
+      },
+      "response_comparison": {
+        "length_analysis": {
+          "phi4_words": 320,
+          "gpt4o_words": 3,
+          "ratio": "gpt4o_0.0x_longer",
+          "length_winner": "phi4"
+        },
+        "uncertainty_handling": {
+          "phi4_says_dont_know": false,
+          "gpt4o_says_dont_know": true,
+          "phi4_uncertainty_score": 0.6666666666666666,
+          "gpt4o_uncertainty_score": 0.6666666666666666,
+          "better_uncertainty": "gpt4o"
+        },
+        "fabrication_analysis": {
+          "phi4_fabrication_indicators": 0,
+          "gpt4o_fabrication_indicators": 0,
+          "phi4_indicators": [],
+          "gpt4o_indicators": [],
+          "lower_fabrication_risk": "gpt4o"
+        },
+        "performance": {
+          "phi4_time": 188.97,
+          "gpt4o_time": 1.15,
+          "speed_winner": "gpt4o",
+          "gpt4o_cost": 2e-05
+        },
+        "overall_assessment": {
+          "phi4_advantages": 1,
+          "gpt4o_advantages": 1,
+          "recommended_model": "gpt4o"
+        }
+      }
+    },
+    {
+      "question_id": "q3",
+      "title": "Server-side Apply Conflict Resolution under High Load",
+      "question": "In Kubernetes v1.32.0, how does server-side apply handle field conflicts when multiple clients attempt concurrent updates on intersecting fields of a resource? IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "category": "api consistency",
+      "difficulty": "expert",
+      "reference_answer": "Server-side apply uses field ownership tracking per field path. When multiple clients modify the same field, conflicts are detected, and the server rejects conflicting updates unless forceApply is used. Field managers maintain consistent ownership.",
+      "phi4_response": {
+        "full_text": "As of Kubernetes v1.32.0, the server-side apply mechanism is designed to simplify and enhance how resources are applied and managed within the cluster. However, when it comes to handling field conflicts that arise from concurrent updates on intersecting fields of a resource by multiple clients, Kubernetes does not have an explicit conflict resolution strategy specifically for server-side apply.\n\nIn general, Kubernetes relies on its standard optimistic concurrency control mechanism using ETags (entity tags) to handle conflicts:\n\n1. **Optimistic Concurrency Control**: Each resource has an associated metadata field called `resourceVersion`, which is updated every time the resource is modified. When a client attempts to update a resource, it must provide the current `resourceVersion`. If this version does not match what's stored on the server (indicating another change occurred since the last fetch), Kubernetes rejects the request with a conflict error.\n\n2. **Conflict Resolution**: Clients must handle these conflicts by retrieving the latest version of the resource, merging their changes appropriately, and then retrying the update operation. This process can be manual or automated depending on how applications are built to handle such scenarios.\n\n3. **Server-Side Apply Specifics**: With server-side apply, when clients submit updates, they must specify field managers (unique identifiers for fields) to track who is responsible for specific subfields of a resource. If two different field managers attempt to update the same field concurrently without proper coordination, a conflict will occur.\n\nIn summary, while server-side apply introduces structured management of resource fields through field managers, it does not inherently resolve conflicts that arise from concurrent updates on intersecting fields. Clients must implement their own logic for detecting and resolving these conflicts by following Kubernetes' standard optimistic concurrency practices. If there are any specific changes or enhancements regarding conflict resolution in server-side apply beyond v1.32.0, those would need to be consulted directly in the relevant release notes or documentation.\n\nIf further details or clarifications are needed about subsequent versions after v1.32.0, consulting the official Kubernetes documentation or release notes for those versions would be advisable.",
+        "response_time": 193.87,
+        "word_count": 335,
+        "character_count": 2378,
+        "says_dont_know": false,
+        "confidence_level": "moderate",
+        "uncertainty_score": 0.3333333333333333,
+        "uncertainty_phrases": [
+          "consult"
+        ],
+        "fabrication_indicators": [],
+        "citations_provided": true,
+        "citation_phrases": [
+          "release notes",
+          "consult"
+        ],
+        "timestamp": "2025-06-15T10:42:43.026014",
+        "model": "phi4:latest"
+      },
+      "gpt4o_response": {
+        "full_text": "I don't know.",
+        "response_time": 1.39,
+        "word_count": 3,
+        "character_count": 13,
+        "tokens_used": 113,
+        "prompt_tokens": 109,
+        "completion_tokens": 4,
+        "cost_usd": 1.9e-05,
+        "says_dont_know": true,
+        "confidence_level": "appropriately_uncertain",
+        "uncertainty_score": 0.6666666666666666,
+        "uncertainty_phrases": [
+          "don't know",
+          "i don't know"
+        ],
+        "fabrication_indicators": [],
+        "citations_provided": false,
+        "citation_phrases": [],
+        "timestamp": "2025-06-15T10:42:44.419441",
+        "model": "gpt-4o-mini"
+      },
+      "response_comparison": {
+        "length_analysis": {
+          "phi4_words": 335,
+          "gpt4o_words": 3,
+          "ratio": "gpt4o_0.0x_longer",
+          "length_winner": "phi4"
+        },
+        "uncertainty_handling": {
+          "phi4_says_dont_know": false,
+          "gpt4o_says_dont_know": true,
+          "phi4_uncertainty_score": 0.3333333333333333,
+          "gpt4o_uncertainty_score": 0.6666666666666666,
+          "better_uncertainty": "gpt4o"
+        },
+        "fabrication_analysis": {
+          "phi4_fabrication_indicators": 0,
+          "gpt4o_fabrication_indicators": 0,
+          "phi4_indicators": [],
+          "gpt4o_indicators": [],
+          "lower_fabrication_risk": "gpt4o"
+        },
+        "performance": {
+          "phi4_time": 193.87,
+          "gpt4o_time": 1.39,
+          "speed_winner": "gpt4o",
+          "gpt4o_cost": 1.9e-05
+        },
+        "overall_assessment": {
+          "phi4_advantages": 1,
+          "gpt4o_advantages": 1,
+          "recommended_model": "gpt4o"
+        }
+      }
+    },
+    {
+      "question_id": "q4",
+      "title": "Dual-stack Service Stability on Node Restarts",
+      "question": "What mechanisms ensure consistency of dual-stack Services (IPv4 + IPv6) after kube-proxy recovers from node restarts or crash loops in Kubernetes v1.32.0? IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "category": "networking",
+      "difficulty": "expert",
+      "reference_answer": "Kube-proxy synchronizes full iptables or IPVS state on startup based on Service and EndpointSlice API objects. Dual-stack requires that both address families are re-populated into kernel tables. Any inconsistencies are reconciled during the sync loop.",
+      "phi4_response": {
+        "full_text": "In Kubernetes v1.32.0, ensuring the consistency of dual-stack services (both IPv4 and IPv6) after events like node restarts or crash loops involves several mechanisms related to kube-proxy and its modes of operation. Here are some key aspects:\n\n1. **Proxy Modes**: kube-proxy can operate in different proxy modes: userspace, iptables, and ipvs. Each mode has its own mechanism for managing dual-stack services:\n   - **IPTables Mode**: kube-proxy uses iptables rules to manage traffic for both IPv4 and IPv6 addresses. These rules are stored persistently across restarts using `iptables-save` and `iptables-restore`, ensuring that the rules are reapplied when kube-proxy or a node is restarted.\n   - **IPVS Mode**: In IPVS mode, kube-proxy uses IP Virtual Server (ipvs) to handle traffic. It supports dual-stack by configuring both IPv4 and IPv6 virtual servers for services. The ipvs entries can be preserved across restarts if the system's underlying configuration management supports it.\n   - **Userspace Mode**: Although less common for production environments, this mode uses in-process user-space proxies which would need to re-establish rules after a restart or crash.\n\n2. **Configuration Reload**: When kube-proxy starts up after a failure or restart, it reads the current state of services and endpoints from the Kubernetes API server. This ensures that any changes made while kube-proxy was down are applied once it recovers.\n\n3. **Service Endpoint Updates**: The Controller Manager continuously monitors for changes in Endpoints and updates them as needed. If kube-proxy misses an update due to a crash or restart, it will synchronize with the current state of endpoints from the Kubernetes API server on startup.\n\n4. **Dual-stack Service Configuration**: For dual-stack services, Kubernetes allows defining both IPv4 and IPv6 addresses at the service level. This ensures that when kube-proxy is restarted, it reconfigures itself to handle traffic for both address types based on the updated service definition.\n\n5. **State Preservation**: While kube-proxy does not inherently preserve state across restarts (like connections or in-flight packets), its rule-based configuration allows it to quickly restore necessary rules and routing logic as soon as it starts up again.\n\n6. **Controller Reconciliation**: The Kubernetes control plane, including the Service Controller and EndpointSlice Controller, continually reconciles desired states with actual configurations on nodes. This reconciliation process ensures that any discrepancies caused by node failures are corrected once kube-proxy is back online.\n\nThese mechanisms collectively ensure that dual-stack services remain consistent and functional even after disruptions such as node restarts or crash loops in Kubernetes v1.32.0. If there are specific cases or edge conditions not covered here, further investigation into the release notes or documentation of that version might be necessary. However, for general operation, these mechanisms should suffice to maintain service consistency.\n\nIf any specific information is missing or unclear based on this explanation, please note that \"I don't know\" would apply in those specific instances beyond what's generally outlined here.",
+        "response_time": 283.45,
+        "word_count": 467,
+        "character_count": 3241,
+        "says_dont_know": true,
+        "confidence_level": "appropriately_uncertain",
+        "uncertainty_score": 0.8,
+        "uncertainty_phrases": [
+          "don't know",
+          "i don't know",
+          "unclear",
+          "might"
+        ],
+        "fabrication_indicators": [],
+        "citations_provided": true,
+        "citation_phrases": [
+          "release notes"
+        ],
+        "timestamp": "2025-06-15T10:47:27.867170",
+        "model": "phi4:latest"
+      },
+      "gpt4o_response": {
+        "full_text": "I don't know.",
+        "response_time": 0.74,
+        "word_count": 3,
+        "character_count": 13,
+        "tokens_used": 119,
+        "prompt_tokens": 115,
+        "completion_tokens": 4,
+        "cost_usd": 2e-05,
+        "says_dont_know": true,
+        "confidence_level": "appropriately_uncertain",
+        "uncertainty_score": 0.6666666666666666,
+        "uncertainty_phrases": [
+          "don't know",
+          "i don't know"
+        ],
+        "fabrication_indicators": [],
+        "citations_provided": false,
+        "citation_phrases": [],
+        "timestamp": "2025-06-15T10:47:28.605290",
+        "model": "gpt-4o-mini"
+      },
+      "response_comparison": {
+        "length_analysis": {
+          "phi4_words": 467,
+          "gpt4o_words": 3,
+          "ratio": "gpt4o_0.0x_longer",
+          "length_winner": "phi4"
+        },
+        "uncertainty_handling": {
+          "phi4_says_dont_know": true,
+          "gpt4o_says_dont_know": true,
+          "phi4_uncertainty_score": 0.8,
+          "gpt4o_uncertainty_score": 0.6666666666666666,
+          "better_uncertainty": "phi4"
+        },
+        "fabrication_analysis": {
+          "phi4_fabrication_indicators": 0,
+          "gpt4o_fabrication_indicators": 0,
+          "phi4_indicators": [],
+          "gpt4o_indicators": [],
+          "lower_fabrication_risk": "gpt4o"
+        },
+        "performance": {
+          "phi4_time": 283.45,
+          "gpt4o_time": 0.74,
+          "speed_winner": "gpt4o",
+          "gpt4o_cost": 2e-05
+        },
+        "overall_assessment": {
+          "phi4_advantages": 1,
+          "gpt4o_advantages": 1,
+          "recommended_model": "gpt4o"
+        }
+      }
+    },
+    {
+      "question_id": "q5",
+      "title": "Node Shutdown Graceful Termination on Windows",
+      "question": "How does Kubernetes v1.32.0 ensure ordered graceful shutdown of containers on Windows nodes, especially considering PreStop hooks and ShutdownGracePeriod configurations? IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "category": "node lifecycle",
+      "difficulty": "expert",
+      "reference_answer": "During node shutdown, kubelet sends termination signals to Windows containers, invokes PreStop hooks, honors pod.spec.terminationGracePeriodSeconds, and observes kubelet's shutdown-grace-period. The Shutdown Manager component coordinates container stop order if feature-gates are enabled.",
+      "phi4_response": {
+        "full_text": "As of Kubernetes version 1.32.0, the handling of container shutdown on Windows nodes has been refined to ensure a more ordered graceful shutdown process, particularly in relation to PreStop hooks and ShutdownGracePeriod configurations.\n\n### Key Points:\n\n1. **Shutdown Order**: \n   - When a pod is terminated, Kubernetes orchestrates an orderly shutdown by first sending a SIGTERM signal to the containers. This allows containers to perform any necessary cleanup operations.\n   \n2. **PreStop Hooks**:\n   - PreStop hooks are executed before a container receives a SIGTERM signal. They allow for custom pre-shutdown logic to be run in each container, such as flushing logs or closing connections.\n\n3. **ShutdownGracePeriod**:\n   - This setting specifies the duration Kubernetes waits after sending SIGTERM before forcefully terminating the containers with a SIGKILL signal.\n   - In version 1.32.0 and later, there are improvements on Windows nodes to better respect this grace period during shutdowns.\n\n4. **Handling on Windows**:\n   - Unlike Linux, where signals like SIGTERM and SIGKILL are well-defined, Windows uses different mechanisms (such as termination requests). Kubernetes adapts these concepts for compatibility with Windows processes.\n   - The handling of the ShutdownGracePeriod has been improved to ensure that containers have adequate time to execute PreStop hooks before being forcefully terminated.\n\n5. **Execution Context**:\n   - On Windows nodes, executing PreStop hooks requires careful consideration of how tasks are scheduled and managed, given the differences in process management compared to Linux environments.\n\n6. **PodDisruptionBudgets (PDB)**:\n   - While not specific to shutdown order, PDBs can impact how pods on Windows are evicted or rescheduled during node maintenance, influencing overall cluster stability.\n\nThese enhancements ensure that when a pod is terminated on a Windows node, Kubernetes provides a more predictable and graceful shutdown process by respecting the configured PreStop hooks and ShutdownGracePeriod settings. This reduces the likelihood of abrupt terminations and potential data loss, aligning with the behaviors seen in Linux environments.\n\nIf you need further specifics or configurations related to these features, reviewing the official Kubernetes release notes for version 1.32.0 would provide additional details.",
+        "response_time": 207.29,
+        "word_count": 332,
+        "character_count": 2371,
+        "says_dont_know": false,
+        "confidence_level": "moderate",
+        "uncertainty_score": 0.0,
+        "uncertainty_phrases": [],
+        "fabrication_indicators": [
+          "specific_version_numbers"
+        ],
+        "citations_provided": true,
+        "citation_phrases": [
+          "release notes"
+        ],
+        "timestamp": "2025-06-15T10:50:55.897317",
+        "model": "phi4:latest"
+      },
+      "gpt4o_response": {
+        "full_text": "I don't know.",
+        "response_time": 1.03,
+        "word_count": 3,
+        "character_count": 13,
+        "tokens_used": 112,
+        "prompt_tokens": 108,
+        "completion_tokens": 4,
+        "cost_usd": 1.9e-05,
+        "says_dont_know": true,
+        "confidence_level": "appropriately_uncertain",
+        "uncertainty_score": 0.6666666666666666,
+        "uncertainty_phrases": [
+          "don't know",
+          "i don't know"
+        ],
+        "fabrication_indicators": [],
+        "citations_provided": false,
+        "citation_phrases": [],
+        "timestamp": "2025-06-15T10:50:56.932140",
+        "model": "gpt-4o-mini"
+      },
+      "response_comparison": {
+        "length_analysis": {
+          "phi4_words": 332,
+          "gpt4o_words": 3,
+          "ratio": "gpt4o_0.0x_longer",
+          "length_winner": "phi4"
+        },
+        "uncertainty_handling": {
+          "phi4_says_dont_know": false,
+          "gpt4o_says_dont_know": true,
+          "phi4_uncertainty_score": 0.0,
+          "gpt4o_uncertainty_score": 0.6666666666666666,
+          "better_uncertainty": "gpt4o"
+        },
+        "fabrication_analysis": {
+          "phi4_fabrication_indicators": 1,
+          "gpt4o_fabrication_indicators": 0,
+          "phi4_indicators": [
+            "specific_version_numbers"
+          ],
+          "gpt4o_indicators": [],
+          "lower_fabrication_risk": "gpt4o"
+        },
+        "performance": {
+          "phi4_time": 207.29,
+          "gpt4o_time": 1.03,
+          "speed_winner": "gpt4o",
+          "gpt4o_cost": 1.9e-05
+        },
+        "overall_assessment": {
+          "phi4_advantages": 1,
+          "gpt4o_advantages": 1,
+          "recommended_model": "gpt4o"
+        }
+      }
+    },
+    {
+      "question_id": "q6",
+      "title": "TLS Cipher Suite Deprecation Impacts",
+      "question": "What compatibility issues arise from Kubernetes v1.32.0 removing TLS_RSA cipher suites from kube-apiserver, especially for legacy clients and kubelet versions? IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "category": "security",
+      "difficulty": "expert",
+      "reference_answer": "Clients using deprecated ciphers will fail TLS handshake unless compatible cipher suites remain enabled via kube-apiserver's --tls-cipher-suites flag. Most modern Go clients auto-negotiate acceptable ciphers, but legacy Java clients may fail without updates.",
+      "phi4_response": {
+        "full_text": "Kubernetes version 1.32.0 introduces changes that affect compatibility with certain TLS_RSA cipher suites in the `kube-apiserver`. This change primarily impacts communication between components and clients using these deprecated cipher suites. Here are some of the key compatibility issues that may arise:\n\n1. **Legacy Clients**: Any client software, such as kubelets or other tools, that uses older versions not supporting newer cipher suites might experience connection failures with `kube-apiserver`. These legacy clients need to be updated to a version compatible with the ciphers supported in Kubernetes 1.32.0.\n\n2. **Older Kubelet Versions**: Older kubelet versions that depend on TLS_RSA cipher suites for secure communication will face connectivity issues with the new `kube-apiserver` configuration. Users must upgrade their kubelets to ensure compatibility with the updated security settings.\n\n3. **Custom or Third-party Tools**: Any custom scripts, third-party tools, or integrations interacting with Kubernetes using these deprecated ciphers may break unless they are reconfigured or updated to support the newer cipher suites.\n\n4. **Security Compliance**: While removing outdated and less secure TLS_RSA cipher suites enhances overall security, it mandates compliance updates across all components in your environment that communicate with `kube-apiserver`.\n\n5. **Mixed Environments**: In environments where different Kubernetes versions coexist (e.g., during phased upgrades), there may be issues if older clusters or nodes still depend on TLS_RSA ciphers for communication.\n\nFor organizations using Kubernetes 1.32.0, it is crucial to review and update all components that communicate with the `kube-apiserver` to ensure they support the required cipher suites. Failure to do so could result in connectivity issues, impacting cluster management and operations.",
+        "response_time": 140.7,
+        "word_count": 257,
+        "character_count": 1875,
+        "says_dont_know": false,
+        "confidence_level": "moderate",
+        "uncertainty_score": 0.75,
+        "uncertainty_phrases": [
+          "might",
+          "could",
+          "may be"
+        ],
+        "fabrication_indicators": [
+          "specific_version_numbers"
+        ],
+        "citations_provided": false,
+        "citation_phrases": [],
+        "timestamp": "2025-06-15T10:53:17.634414",
+        "model": "phi4:latest"
+      },
+      "gpt4o_response": {
+        "full_text": "I don't know.",
+        "response_time": 1.45,
+        "word_count": 3,
+        "character_count": 13,
+        "tokens_used": 114,
+        "prompt_tokens": 110,
+        "completion_tokens": 4,
+        "cost_usd": 1.9e-05,
+        "says_dont_know": true,
+        "confidence_level": "appropriately_uncertain",
+        "uncertainty_score": 0.6666666666666666,
+        "uncertainty_phrases": [
+          "don't know",
+          "i don't know"
+        ],
+        "fabrication_indicators": [],
+        "citations_provided": false,
+        "citation_phrases": [],
+        "timestamp": "2025-06-15T10:53:19.088680",
+        "model": "gpt-4o-mini"
+      },
+      "response_comparison": {
+        "length_analysis": {
+          "phi4_words": 257,
+          "gpt4o_words": 3,
+          "ratio": "gpt4o_0.0x_longer",
+          "length_winner": "phi4"
+        },
+        "uncertainty_handling": {
+          "phi4_says_dont_know": false,
+          "gpt4o_says_dont_know": true,
+          "phi4_uncertainty_score": 0.75,
+          "gpt4o_uncertainty_score": 0.6666666666666666,
+          "better_uncertainty": "phi4"
+        },
+        "fabrication_analysis": {
+          "phi4_fabrication_indicators": 1,
+          "gpt4o_fabrication_indicators": 0,
+          "phi4_indicators": [
+            "specific_version_numbers"
+          ],
+          "gpt4o_indicators": [],
+          "lower_fabrication_risk": "gpt4o"
+        },
+        "performance": {
+          "phi4_time": 140.7,
+          "gpt4o_time": 1.45,
+          "speed_winner": "gpt4o",
+          "gpt4o_cost": 1.9e-05
+        },
+        "overall_assessment": {
+          "phi4_advantages": 0,
+          "gpt4o_advantages": 1,
+          "recommended_model": "gpt4o"
+        }
+      }
+    },
+    {
+      "question_id": "q7",
+      "title": "PodDisruptionBudget (PDB) Enforcement in Upgrade Scenarios",
+      "question": "During Kubernetes v1.32.0 version upgrades, how are PodDisruptionBudgets enforced when automated tools (like cluster-autoscaler or kubeadm upgrade) attempt disruptive actions? IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "category": "availability",
+      "difficulty": "expert",
+      "reference_answer": "Evictions honor PDB constraints. If disruptions exceed allowed levels, evictions are blocked unless --force or --ignore-pdb flags are explicitly used. kubeadm respects PDBs unless forcibly overridden.",
+      "phi4_response": {
+        "full_text": "As of Kubernetes v1.32.0, the enforcement of `PodDisruptionBudgets` during upgrades and other disruptive operations has been improved to ensure that these budgets are respected more consistently. Prior versions had some limitations where certain automated tools or controllers might not fully respect `PodDisruptionBudgets`, leading to potential disruptions beyond what was defined.\n\nIn v1.32.0, Kubernetes introduced changes to better enforce `PodDisruptionBudgets` during node drains and other similar operations:\n\n1. **Node Drain Enforcement**: When a node is drained (e.g., during upgrades or maintenance), the eviction controller now respects `PodDisruptionBudgets`. This means that pods on a node will not be evicted if doing so would violate their associated budgets.\n\n2. **Improved Controller Behavior**: The changes ensure that controllers like the kubelet, which are responsible for managing pod lifecycles during disruptions (e.g., node draining), adhere to `PodDisruptionBudgets`. This reduces the risk of unexpected downtime or service disruption due to pods being evicted when they should not be.\n\n3. **Compatibility with Cluster Management Tools**: The improvements also aim to ensure better compatibility and integration with cluster management tools like `cluster-autoscaler` and `kubeadm upgrade`. These tools are now more likely to respect the constraints set by `PodDisruptionBudgets`, minimizing disruptions during operations such as scaling or upgrading.\n\nOverall, these enhancements in Kubernetes v1.32.0 aim to provide stronger guarantees that `PodDisruptionBudgets` will be respected across various scenarios where pods might otherwise be disrupted, including during automated upgrades and maintenance activities.",
+        "response_time": 133.94,
+        "word_count": 231,
+        "character_count": 1738,
+        "says_dont_know": false,
+        "confidence_level": "moderate",
+        "uncertainty_score": 0.5,
+        "uncertainty_phrases": [
+          "might"
+        ],
+        "fabrication_indicators": [],
+        "citations_provided": false,
+        "citation_phrases": [],
+        "timestamp": "2025-06-15T10:55:33.029418",
+        "model": "phi4:latest"
+      },
+      "gpt4o_response": {
+        "full_text": "I don't know.",
+        "response_time": 0.81,
+        "word_count": 3,
+        "character_count": 13,
+        "tokens_used": 119,
+        "prompt_tokens": 115,
+        "completion_tokens": 4,
+        "cost_usd": 2e-05,
+        "says_dont_know": true,
+        "confidence_level": "appropriately_uncertain",
+        "uncertainty_score": 0.6666666666666666,
+        "uncertainty_phrases": [
+          "don't know",
+          "i don't know"
+        ],
+        "fabrication_indicators": [],
+        "citations_provided": false,
+        "citation_phrases": [],
+        "timestamp": "2025-06-15T10:55:33.844678",
+        "model": "gpt-4o-mini"
+      },
+      "response_comparison": {
+        "length_analysis": {
+          "phi4_words": 231,
+          "gpt4o_words": 3,
+          "ratio": "gpt4o_0.0x_longer",
+          "length_winner": "phi4"
+        },
+        "uncertainty_handling": {
+          "phi4_says_dont_know": false,
+          "gpt4o_says_dont_know": true,
+          "phi4_uncertainty_score": 0.5,
+          "gpt4o_uncertainty_score": 0.6666666666666666,
+          "better_uncertainty": "gpt4o"
+        },
+        "fabrication_analysis": {
+          "phi4_fabrication_indicators": 0,
+          "gpt4o_fabrication_indicators": 0,
+          "phi4_indicators": [],
+          "gpt4o_indicators": [],
+          "lower_fabrication_risk": "gpt4o"
+        },
+        "performance": {
+          "phi4_time": 133.94,
+          "gpt4o_time": 0.81,
+          "speed_winner": "gpt4o",
+          "gpt4o_cost": 2e-05
+        },
+        "overall_assessment": {
+          "phi4_advantages": 0,
+          "gpt4o_advantages": 1,
+          "recommended_model": "gpt4o"
+        }
+      }
+    },
+    {
+      "question_id": "q8",
+      "title": "StatefulSet VolumeClaimTemplate AutoDeletion Behavior",
+      "question": "How does Kubernetes v1.32.0 handle PVC deletion when StatefulSet pods are deleted or scaled down with the AutoDeletePVC feature enabled? IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "category": "storage",
+      "difficulty": "expert",
+      "reference_answer": "When AutoDeletePVC is enabled, PVCs created from volumeClaimTemplates are automatically deleted when their associated StatefulSet pod is deleted. This behavior depends on feature-gates and annotation presence. Retention policies on the StatefulSet also influence deletion.",
+      "phi4_response": {
+        "full_text": "As of Kubernetes version 1.32.0, the handling of Persistent Volume Claims (PVCs) in conjunction with StatefulSets has seen some improvements related to the `AutoDeletePVC` feature. This feature provides more flexibility and automation when managing PVC lifecycles associated with StatefulSet pods.\n\nHere\u2019s how it works:\n\n1. **AutoDeletePVC Feature**: The `AutoDeletePVC` feature was introduced in Kubernetes 1.22 as a beta feature and became stable in version 1.27. By default, when you delete or scale down a pod managed by a StatefulSet, the associated PVC is not automatically deleted. This behavior can be changed by enabling the `AutoDeletePVC` option.\n\n2. **Enabling AutoDeletePVC**: When `spec.podManagementPolicy: \"Parallel\"` and `spec.volumeClaimTemplates[].volumeName` are specified, you can enable `AutoDeletePVC` in the StatefulSet configuration with the following annotation on each volume claim template:\n   ```yaml\n   annotations:\n     storage.kubernetes.io/auto-delete: \"true\"\n   ```\n\n3. **Behavior**: With `AutoDeletePVC` enabled and when a pod is deleted or scaled down, Kubernetes will automatically delete the associated PVC. This helps in avoiding orphaned PVCs that might linger after their corresponding StatefulSet pods are removed.\n\n4. **Considerations**: \n   - Ensure that enabling this feature aligns with your data retention policies, as it leads to automatic deletion of PVCs and thus the data they contain.\n   - It's important to note that `AutoDeletePVC` works only when using volume claim templates defined in the StatefulSet.\n\n5. **No Impact on StatefulSets without VolumeClaimTemplates**: For StatefulSets not utilizing volume claim templates, this feature does not apply as there is no direct association between PVCs and pods in such configurations unless explicitly created outside of the StatefulSet's scope.\n\nIn summary, Kubernetes 1.32.0 continues to support the `AutoDeletePVC` feature, providing a mechanism for automatically cleaning up PVCs associated with StatefulSets when those pods are deleted or scaled down, provided that specific configuration settings are in place.",
+        "response_time": 179.86,
+        "word_count": 288,
+        "character_count": 2117,
+        "says_dont_know": false,
+        "confidence_level": "moderate",
+        "uncertainty_score": 0.3333333333333333,
+        "uncertainty_phrases": [
+          "might"
+        ],
+        "fabrication_indicators": [
+          "code_example",
+          "specific_version_numbers"
+        ],
+        "citations_provided": false,
+        "citation_phrases": [],
+        "timestamp": "2025-06-15T10:58:33.706909",
+        "model": "phi4:latest"
+      },
+      "gpt4o_response": {
+        "full_text": "I don't know.",
+        "response_time": 0.78,
+        "word_count": 3,
+        "character_count": 13,
+        "tokens_used": 111,
+        "prompt_tokens": 107,
+        "completion_tokens": 4,
+        "cost_usd": 1.8e-05,
+        "says_dont_know": true,
+        "confidence_level": "appropriately_uncertain",
+        "uncertainty_score": 0.6666666666666666,
+        "uncertainty_phrases": [
+          "don't know",
+          "i don't know"
+        ],
+        "fabrication_indicators": [],
+        "citations_provided": false,
+        "citation_phrases": [],
+        "timestamp": "2025-06-15T10:58:34.490680",
+        "model": "gpt-4o-mini"
+      },
+      "response_comparison": {
+        "length_analysis": {
+          "phi4_words": 288,
+          "gpt4o_words": 3,
+          "ratio": "gpt4o_0.0x_longer",
+          "length_winner": "phi4"
+        },
+        "uncertainty_handling": {
+          "phi4_says_dont_know": false,
+          "gpt4o_says_dont_know": true,
+          "phi4_uncertainty_score": 0.3333333333333333,
+          "gpt4o_uncertainty_score": 0.6666666666666666,
+          "better_uncertainty": "gpt4o"
+        },
+        "fabrication_analysis": {
+          "phi4_fabrication_indicators": 2,
+          "gpt4o_fabrication_indicators": 0,
+          "phi4_indicators": [
+            "code_example",
+            "specific_version_numbers"
+          ],
+          "gpt4o_indicators": [],
+          "lower_fabrication_risk": "gpt4o"
+        },
+        "performance": {
+          "phi4_time": 179.86,
+          "gpt4o_time": 0.78,
+          "speed_winner": "gpt4o",
+          "gpt4o_cost": 1.8e-05
+        },
+        "overall_assessment": {
+          "phi4_advantages": 0,
+          "gpt4o_advantages": 1,
+          "recommended_model": "gpt4o"
+        }
+      }
+    },
+    {
+      "question_id": "q9",
+      "title": "Ordered Pod Termination with Sidecars",
+      "question": "When Kubernetes v1.32.0 uses the OrderedReady pod termination alpha feature, how is sidecar shutdown order guaranteed during pod deletion or node failures? IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "category": "pod lifecycle",
+      "difficulty": "expert",
+      "reference_answer": "Sidecar containers terminate based on their startup order and container lifecycle sequencing. Kubelet invokes preStop hooks in correct order if shutdown grace periods allow. Node power loss may disrupt this sequence if termination windows are insufficient.",
+      "phi4_response": {
+        "full_text": "In Kubernetes version 1.32.0, the OrderedReady pod termination feature introduces a way to ensure that pods are terminated in an orderly fashion by waiting for their containers to reach a \"ready\" state before proceeding with shutdown. This is particularly useful during node maintenance or scaling operations where it's important to control the order of pod terminations.\n\nWhen this feature is used, Kubernetes will terminate pods by ensuring each container reaches a non-ready state (usually meaning that readiness probes fail) before terminating the next one. This ensures an orderly shutdown process where dependent containers, such as sidecars, can complete their tasks or release resources in a controlled manner.\n\nFor sidecar containers, which often provide support functions like logging, monitoring, or proxying for main application containers, this feature guarantees that they are given time to shut down gracefully before the primary application container is terminated. This ordered shutdown helps prevent issues such as data loss or incomplete transactions by allowing sidecars sufficient time to process and forward any remaining logs, finish active network connections, or perform other necessary cleanup tasks.\n\nThe OrderedReady pod termination ensures this orderly sequence of events during both planned deletions (such as manual pod deletion) and unplanned node failures (like node draining). By using readiness probes to check the status of containers before proceeding with termination, Kubernetes can manage shutdown in a predictable way that respects dependencies between containers within a pod.\n\nOverall, this feature helps maintain service reliability and application integrity during both routine operations and unexpected disruptions.",
+        "response_time": 119.08,
+        "word_count": 251,
+        "character_count": 1761,
+        "says_dont_know": false,
+        "confidence_level": "moderate",
+        "uncertainty_score": 0.5,
+        "uncertainty_phrases": [
+          "check the"
+        ],
+        "fabrication_indicators": [
+          "specific_version_numbers"
+        ],
+        "citations_provided": true,
+        "citation_phrases": [
+          "check the"
+        ],
+        "timestamp": "2025-06-15T11:00:33.573716",
+        "model": "phi4:latest"
+      },
+      "gpt4o_response": {
+        "full_text": "I don't know.",
+        "response_time": 0.8,
+        "word_count": 3,
+        "character_count": 13,
+        "tokens_used": 113,
+        "prompt_tokens": 109,
+        "completion_tokens": 4,
+        "cost_usd": 1.9e-05,
+        "says_dont_know": true,
+        "confidence_level": "appropriately_uncertain",
+        "uncertainty_score": 0.6666666666666666,
+        "uncertainty_phrases": [
+          "don't know",
+          "i don't know"
+        ],
+        "fabrication_indicators": [],
+        "citations_provided": false,
+        "citation_phrases": [],
+        "timestamp": "2025-06-15T11:00:34.378121",
+        "model": "gpt-4o-mini"
+      },
+      "response_comparison": {
+        "length_analysis": {
+          "phi4_words": 251,
+          "gpt4o_words": 3,
+          "ratio": "gpt4o_0.0x_longer",
+          "length_winner": "phi4"
+        },
+        "uncertainty_handling": {
+          "phi4_says_dont_know": false,
+          "gpt4o_says_dont_know": true,
+          "phi4_uncertainty_score": 0.5,
+          "gpt4o_uncertainty_score": 0.6666666666666666,
+          "better_uncertainty": "gpt4o"
+        },
+        "fabrication_analysis": {
+          "phi4_fabrication_indicators": 1,
+          "gpt4o_fabrication_indicators": 0,
+          "phi4_indicators": [
+            "specific_version_numbers"
+          ],
+          "gpt4o_indicators": [],
+          "lower_fabrication_risk": "gpt4o"
+        },
+        "performance": {
+          "phi4_time": 119.08,
+          "gpt4o_time": 0.8,
+          "speed_winner": "gpt4o",
+          "gpt4o_cost": 1.9e-05
+        },
+        "overall_assessment": {
+          "phi4_advantages": 1,
+          "gpt4o_advantages": 1,
+          "recommended_model": "gpt4o"
+        }
+      }
+    },
+    {
+      "question_id": "q10",
+      "title": "MemoryManager Behavior with HugePages",
+      "question": "How does Kubernetes v1.32.0 MemoryManager interact with HugePages allocations when dynamic policy and NUMA alignment are both enabled? IMPORTANT: if you do not have relevant information, say 'I don't know'",
+      "category": "resource management",
+      "difficulty": "expert",
+      "reference_answer": "The MemoryManager attempts NUMA-aware memory allocation. HugePages allocations occur via explicit resource requests and may require alignment with CPU topology hints for optimal placement. Coordination depends on kubelet, device plugins, and node topology.",
+      "phi4_response": {
+        "full_text": "In Kubernetes v1.32.0, the Memory Manager introduces several enhancements for managing memory resources more efficiently, especially in environments where performance is critical.\n\nWhen considering the interaction of the MemoryManager with HugePages allocations under conditions where dynamic policy and NUMA (Non-Uniform Memory Access) alignment are both enabled, here's a general overview:\n\n1. **Dynamic Policy**: This feature allows Kubernetes to adjust its memory management strategies based on real-time workload requirements. It helps in making decisions about when and how much HugePages should be allocated dynamically instead of statically during node initialization.\n\n2. **NUMA Alignment**: Aligning memory allocations with NUMA nodes can improve performance by reducing latency and increasing bandwidth for memory accesses, as it ensures that memory pages are accessed from the nearest possible node.\n\nWhen both dynamic policy and NUMA alignment are enabled, Kubernetes' MemoryManager works to optimize HugePages allocation in several ways:\n\n- **Dynamic Allocation**: Instead of pre-reserving a fixed amount of HugePages at startup, dynamic allocation allows for more flexible management. This means that HugePages can be allocated on-demand when a pod requests memory above a certain threshold (e.g., 1GiB).\n\n- **NUMA-awareness**: The MemoryManager takes into account the NUMA topology to allocate HugePages in a way that aligns with the specific NUMA node where a container is scheduled. This ensures optimal performance by minimizing cross-node memory access.\n\n- **Resource Efficiency**: By dynamically managing HugePages, Kubernetes can better utilize available memory resources across nodes and reduce waste associated with pre-reserving large amounts of HugePages that might not be used immediately or fully utilized at all times.\n\nOverall, the combination of dynamic policy and NUMA alignment under the MemoryManager helps in achieving a balance between resource efficiency and performance optimization for workloads running on Kubernetes clusters. If you need more specific details about implementation or edge cases, consulting the official Kubernetes documentation or release notes would be beneficial.",
+        "response_time": 154.43,
+        "word_count": 307,
+        "character_count": 2223,
+        "says_dont_know": false,
+        "confidence_level": "moderate",
+        "uncertainty_score": 0.6666666666666666,
+        "uncertainty_phrases": [
+          "consult",
+          "might"
+        ],
+        "fabrication_indicators": [],
+        "citations_provided": true,
+        "citation_phrases": [
+          "release notes",
+          "consult"
+        ],
+        "timestamp": "2025-06-15T11:03:08.815455",
+        "model": "phi4:latest"
+      },
+      "gpt4o_response": {
+        "full_text": "I don't know.",
+        "response_time": 0.85,
+        "word_count": 3,
+        "character_count": 13,
+        "tokens_used": 109,
+        "prompt_tokens": 105,
+        "completion_tokens": 4,
+        "cost_usd": 1.8e-05,
+        "says_dont_know": true,
+        "confidence_level": "appropriately_uncertain",
+        "uncertainty_score": 0.6666666666666666,
+        "uncertainty_phrases": [
+          "don't know",
+          "i don't know"
+        ],
+        "fabrication_indicators": [],
+        "citations_provided": false,
+        "citation_phrases": [],
+        "timestamp": "2025-06-15T11:03:09.669861",
+        "model": "gpt-4o-mini"
+      },
+      "response_comparison": {
+        "length_analysis": {
+          "phi4_words": 307,
+          "gpt4o_words": 3,
+          "ratio": "gpt4o_0.0x_longer",
+          "length_winner": "phi4"
+        },
+        "uncertainty_handling": {
+          "phi4_says_dont_know": false,
+          "gpt4o_says_dont_know": true,
+          "phi4_uncertainty_score": 0.6666666666666666,
+          "gpt4o_uncertainty_score": 0.6666666666666666,
+          "better_uncertainty": "gpt4o"
+        },
+        "fabrication_analysis": {
+          "phi4_fabrication_indicators": 0,
+          "gpt4o_fabrication_indicators": 0,
+          "phi4_indicators": [],
+          "gpt4o_indicators": [],
+          "lower_fabrication_risk": "gpt4o"
+        },
+        "performance": {
+          "phi4_time": 154.43,
+          "gpt4o_time": 0.85,
+          "speed_winner": "gpt4o",
+          "gpt4o_cost": 1.8e-05
+        },
+        "overall_assessment": {
+          "phi4_advantages": 1,
+          "gpt4o_advantages": 1,
+          "recommended_model": "gpt4o"
+        }
+      }
+    }
+  ],
+  "full_response_statistics": {
+    "response_lengths": {
+      "phi4_avg_words": 316.0,
+      "gpt4o_avg_words": 3.0,
+      "phi4_range": "231-467 words",
+      "gpt4o_range": "3-3 words"
+    },
+    "response_times": {
+      "phi4_avg_seconds": 181.1,
+      "gpt4o_avg_seconds": 1.04,
+      "phi4_range": "119.1-283.4s",
+      "gpt4o_range": "0.7-1.4s"
+    },
+    "uncertainty_analysis": {
+      "phi4_total_uncertainty_phrases": 16,
+      "gpt4o_total_uncertainty_phrases": 20,
+      "common_phi4_phrases": [
+        "could",
+        "i don't know",
+        "unclear",
+        "consult",
+        "might"
+      ],
+      "common_gpt4o_phrases": [
+        "don't know",
+        "i don't know"
+      ]
+    },
+    "fabrication_analysis": {
+      "phi4_total_indicators": 5,
+      "gpt4o_total_indicators": 0,
+      "phi4_fabrication_types": [
+        "specific_version_numbers",
+        "code_example"
+      ],
+      "gpt4o_fabrication_types": []
+    }
+  }
+}
